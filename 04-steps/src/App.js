@@ -6,13 +6,13 @@ const messages = [
   "Invest your new income 🤑",
 ];
 
-export default function App(){
+export default function App() {
   return (
     <div>
       <Steps />
-      <Steps />
+      {/* <Steps /> */}
     </div>
-  )
+  );
 }
 function Steps() {
   const [step, setStep] = useState(1);
@@ -41,21 +41,25 @@ function Steps() {
           </p>
 
           <div className="buttons">
-            <button
-              style={{ backgroundColor: "#7950f2", color: "#fff" }}
-              onClick={updatePrevious}
-            >
-              Previous
-            </button>
-            <button
-              style={{ backgroundColor: "#7950f2", color: "#fff" }}
-              onClick={updateNext}
-            >
-              Next
-            </button>
+            <Button onClick={updatePrevious} bgColor="#7950f2" color="#fff">
+              Previous <span>👈</span>
+            </Button>
+            <Button onClick={updateNext} bgColor="#7950f2" color="#fff">
+              Next <span>👉</span>
+            </Button>
           </div>
         </div>
       )}
     </div>
+  );
+}
+function Button({ bgColor, color, onClick, children }) {
+  return (
+    <button
+      style={{ backgroundColor: bgColor, color: color }}
+      onClick={onClick}
+    >
+      {children}
+    </button>
   );
 }
